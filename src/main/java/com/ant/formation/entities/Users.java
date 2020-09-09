@@ -12,6 +12,6 @@ import javax.persistence.Enumerated;
 public class Users extends Personne {
     private String username;
     private String password;
-   /* @Enumerated(EnumType.STRING)
-    private Role role;*/
+   @Enumerated(EnumType.STRING)
+    private Role role;
 }
