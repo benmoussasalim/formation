@@ -14,10 +14,10 @@ public class CandidatFormation {
     private CandidatId id;
     private double tarif;
     @ManyToOne
-    @JoinColumn( insertable = false, updatable = false)
+    @JoinColumn(name = "formation_id", insertable = false, updatable = false)
     private Formation formation;
 
     @ManyToOne
-    @JoinColumn( insertable = false, updatable = false)
+    @JoinColumn(name = "candidat_id", insertable = false, updatable = false)
     private Candidat candidat;
 }
