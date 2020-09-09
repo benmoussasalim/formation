@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,5 +22,10 @@ public class Candidat extends Personne {
     @Enumerated(EnumType.STRING)
     private Status status;
     private String societe;
+
+
+    @ManyToMany(mappedBy = "candidats")
+    private List<GroupeEncadrement> groupeEncadrements;
+
 
 }
