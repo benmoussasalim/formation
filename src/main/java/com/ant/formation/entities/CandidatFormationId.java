@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Embeddable
 @Data
-public class CandidatId implements Serializable {
+public class CandidatFormationId implements Serializable {
     @Column(name = "candidat_id")
     private Integer candidatId;
     @Column(name = "formation_id")

@@ -14,9 +14,12 @@ public class Paiment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Date date;
+    @Enumerated(EnumType.STRING)
     private ModePaiment modePaiment;
     private Integer nbh;
     private double prixh;
+    @ManyToOne
+    private Users user;
 
     @ManyToOne
     private GroupeEncadrement groupeEncadrement;

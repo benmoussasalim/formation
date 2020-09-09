@@ -17,4 +17,6 @@ public class Theme implements Serializable {
     @OneToMany(mappedBy = "theme")
     private List<Formation> formations;
 
+    @ManyToMany
+    private List<Formateur> formateurs;
 }

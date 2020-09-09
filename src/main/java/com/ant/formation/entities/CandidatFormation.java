@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 @Data
 public class CandidatFormation {
     @EmbeddedId
-    private CandidatId id;
+    private CandidatFormationId id;
     private double tarif;
     @ManyToOne
     @JoinColumn(name = "formation_id", insertable = false, updatable = false)

@@ -23,6 +23,8 @@ public class Candidat extends Personne {
     private Status status;
     private String societe;
 
+    @OneToMany(mappedBy = "candidat")
+    private List<CandidatFormation> candidatFormations;
 
     @ManyToMany(mappedBy = "candidats")
     private List<GroupeEncadrement> groupeEncadrements;
