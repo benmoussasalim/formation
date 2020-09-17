@@ -12,6 +12,7 @@ import java.util.List;
 @Data
 public class Formateur extends Personne {
 
+
     @OneToMany(mappedBy = "formateur")
     private List<Formation> formations;
 

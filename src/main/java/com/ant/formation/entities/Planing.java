@@ -17,7 +17,7 @@ public class Planing implements Serializable {
     private Date dateFin;
     @ManyToOne
     private Formation formation;
-    @OneToMany(mappedBy = "planing")
+    @ManyToMany
     private List<Salle> salles;
     @ManyToOne
     private GroupeEncadrement groupeEncadrement;
