@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -17,4 +16,6 @@ public class Personne implements Serializable {
     private String email;
     private String telephone;
     private String telephone2;
+
+
 }

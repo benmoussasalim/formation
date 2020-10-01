@@ -7,11 +7,13 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/salle")
+@CrossOrigin("*")
 public class SalleController {
 
     @Autowired
@@ -23,7 +25,7 @@ public class SalleController {
     }
 
     @PostMapping
-    public MessageResponse save( @RequestBody Salle salle) {
+    public MessageResponse save(@RequestBody Salle salle) {
         return  salleService.save(salle);
     }
 
