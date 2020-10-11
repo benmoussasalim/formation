@@ -31,7 +31,6 @@ public class Formation implements Serializable {
     private Theme theme;
     @ManyToOne
     private Formateur formateur;
-
     @OneToMany(mappedBy = "formation")
     private List<Planing> planings;
 

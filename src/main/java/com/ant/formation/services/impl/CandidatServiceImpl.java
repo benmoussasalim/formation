@@ -8,22 +8,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class CandidatServiceImpl implements CandidatService {
 
-     @Autowired
-     private CandidatRepository candidatRepository;
+    @Autowired
+    private CandidatRepository candidatRepository;
 
     @Override
     public MessageResponse save(Candidat candidat) {
 
         boolean exist = candidatRepository.existsByCin(candidat.getCin());
-        if(exist){
-            return  new MessageResponse(false, "Attention", "CIN existe déjà");
+        if (exist) {
+            return new MessageResponse(false, "Attention", "CIN existe déjà");
         }
         exist = candidatRepository.existsByEmail(candidat.getEmail());
-        if(exist){
-            return  new MessageResponse(false, "Attention", "Email existe déjà");
+        if (exist) {
+            return new MessageResponse(false, "Attention", "Email existe déjà");
         }
 
 
@@ -34,21 +35,20 @@ public class CandidatServiceImpl implements CandidatService {
 
     @Override
     public MessageResponse update(Candidat candidat) {
-    boolean exist = candidatRepository.existsByCinAndId(candidat.getCin(), candidat.getId());
-    if(!exist) {
-        exist = candidatRepository.existsByCin(candidat.getCin());
-        if(exist){
-            return  new MessageResponse(false, "Attention", "CIN existe déjà");
+        boolean exist = candidatRepository.existsByCinAndId(candidat.getCin(), candidat.getId());
+        if (!exist) {
+            exist = candidatRepository.existsByCin(candidat.getCin());
+            if (exist) {
+                return new MessageResponse(false, "Attention", "CIN existe déjà");
+            }
         }
-    }
-
 
 
         exist = candidatRepository.existsByEmailAndId(candidat.getEmail(), candidat.getId());
-        if(!exist) {
+        if (!exist) {
             exist = candidatRepository.existsByEmail(candidat.getEmail());
-            if(exist){
-                return  new MessageResponse(false, "Attention", "Email existe déjà");
+            if (exist) {
+                return new MessageResponse(false, "Attention", "Email existe déjà");
             }
         }
 
@@ -62,11 +62,11 @@ public class CandidatServiceImpl implements CandidatService {
     public MessageResponse delete(Integer id) {
 
 
-            boolean exist = candidatRepository.existsByIdAndCandidatFormationsIsNotNullOrGroupeEncadrementsIsNotNull(id);
-            if(exist){
-                return  new MessageResponse(false, "Attention",
-                        "Candidat affecté a un ou plusieurs formations");
-            }
+        boolean exist = candidatRepository.existsByIdAndCandidatFormationsIsNotNullOrGroupeEncadrementsIsNotNull(id);
+        if (exist) {
+            return new MessageResponse(false, "Attention",
+                    "Candidat affecté a un ou plusieurs formations");
+        }
 
 
         candidatRepository.deleteById(id);
@@ -77,6 +77,11 @@ public class CandidatServiceImpl implements CandidatService {
     @Override
     public List<Candidat> findAll() {
         return candidatRepository.findAll();
+    }
+
+    @Override
+    public List<Candidat> filter(String keyword) {
+        return candidatRepository.findByFirstNameOrLastName(keyword);
     }
 
     @Override

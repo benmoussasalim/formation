@@ -2,7 +2,6 @@ package com.ant.formation.controllers;
 
 import com.ant.formation.dto.MessageResponse;
 import com.ant.formation.entities.Candidat;
-import com.ant.formation.entities.Formateur;
 import com.ant.formation.services.CandidatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,11 @@ public class CandidatController {
     public List<Candidat> findAll() {
         return  candidatService.findAll();
     }
-
+    @GetMapping("/filtrer/{keyword}")
+    public List<Candidat> filter(@PathVariable String keyword) {
+        return
+                candidatService.filter(keyword);
+    }
     @PostMapping
     public MessageResponse save(@RequestBody Candidat candidat) {
         return  candidatService.save(candidat);

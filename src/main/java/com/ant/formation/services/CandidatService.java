@@ -11,6 +11,7 @@ public interface CandidatService {
     public MessageResponse update(Candidat candidat);
     public MessageResponse delete(Integer id);
     public List<Candidat> findAll();
+    public List<Candidat> filter(String keyword);
     public Candidat findByID(Integer id);
 
 }

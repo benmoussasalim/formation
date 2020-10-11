@@ -3,6 +3,7 @@ package com.ant.formation.services.impl;
 import com.ant.formation.dto.MessageResponse;
 import com.ant.formation.dto.PasswordDto;
 import com.ant.formation.entities.Users;
+import com.ant.formation.enums.Role;
 import com.ant.formation.repositories.UsersRepository;
 import com.ant.formation.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
         user.setPassword(cryptedPassword);
         user.setEnabled(true);
-
+        user.setRole(Role.ROLE_USER);
         userRepository.save(user);
 
         return new MessageResponse(true, "Succès", "Opération effectuée");
@@ -83,7 +84,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Users> findAll() {
-        return userRepository.findAll();
+        return userRepository.findByRole(Role.ROLE_USER);
     }
 
     @Override
