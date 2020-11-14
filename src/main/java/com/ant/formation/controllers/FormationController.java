@@ -13,17 +13,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/formation")
+@CrossOrigin("*")
 public class FormationController {
     @Autowired
     private FormationService formationService;
-    @GetMapping("/{status}")
+    
+    @GetMapping("/status/{status}")
     public List<Formation> findByStatus(@PathVariable StatusFormation status) {
         return  formationService.findByStatus(status);
+    }
+    
+    @GetMapping("/{id}")
+    public Formation findById(@PathVariable Integer id) {
+        return  formationService.findById(id);
     }
 
     @PostMapping
     public MessageResponse save(@RequestBody Formation formation) {
-        formation.setStatusFormation(StatusFormation.EN_ATTENTE);
+        
         return  formationService.save(formation);
     }
 

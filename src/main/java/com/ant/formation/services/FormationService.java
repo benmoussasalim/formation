@@ -9,9 +9,14 @@ import com.ant.formation.enums.StatusFormation;
 import java.util.List;
 
 public interface FormationService {
-    public MessageResponse save(Formation formation);
-    public MessageResponse update(Formation formation);
-    public MessageResponse delete(Integer id);
-    public List<Formation> findByStatus(StatusFormation statusFormation);
+	public MessageResponse save(Formation formation);
+
+	public MessageResponse update(Formation formation);
+
+	public MessageResponse delete(Integer id);
+
+	public List<Formation> findByStatus(StatusFormation statusFormation);
+
+	public Formation findById(Integer id);
 
 }

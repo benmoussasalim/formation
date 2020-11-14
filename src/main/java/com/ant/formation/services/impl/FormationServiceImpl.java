@@ -20,6 +20,7 @@ public class FormationServiceImpl implements FormationService {
 
     @Override
     public MessageResponse save(Formation formation) {
+    	formation.setStatusFormation(StatusFormation.EN_ATTENTE);
         formationRepository.save(formation);
         return new MessageResponse(true, "Succès", "Opération effectuée");
     }
@@ -55,5 +56,11 @@ public class FormationServiceImpl implements FormationService {
     public List<Formation> findByStatus(StatusFormation statusFormation) {
         return formationRepository.findByStatusFormation(statusFormation);
     }
+
+	@Override
+	public Formation findById(Integer id) {
+		// TODO Auto-generated method stub
+		return formationRepository.findById(id).orElse(null);
+	}
 
 }
