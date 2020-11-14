@@ -41,10 +41,10 @@ public class FormateurController {
         return formateurService.findByID(id);
     }
 
-    @GetMapping
-    public List<Formateur> findByTheme(@PathVariable Theme theme)
-    {
-        return  formateurService.findByFormateurThemes(theme);
-    }
+//    @GetMapping
+//    public List<Formateur> findByTheme(@PathVariable Theme theme)
+//    {
+//        return  formateurService.findByFormateurThemes(theme);
+//    }
 
 }

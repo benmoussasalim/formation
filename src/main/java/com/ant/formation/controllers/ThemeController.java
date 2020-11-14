@@ -17,6 +17,11 @@ public class ThemeController {
     public List<Theme> findAll() {
         return  themeService.findAll();
     }
+    
+    @GetMapping("/formateur/{id}")
+    public List<Theme> findByFormateur(@PathVariable Integer id) {
+		return themeService.findByFormateur(id);
+    }
 
     @PostMapping
     public MessageResponse save(@RequestBody Theme theme) {

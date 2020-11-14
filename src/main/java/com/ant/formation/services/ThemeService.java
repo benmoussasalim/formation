@@ -11,5 +11,5 @@ public interface ThemeService {
     public MessageResponse delete(Integer id);
     public List<Theme> findAll();
     public Theme findByLibelle(String libelle);
-
+    public List<Theme> findByFormateur(Integer id);
 }

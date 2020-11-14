@@ -1,13 +1,15 @@
 package com.ant.formation.services.impl;
 
-import com.ant.formation.dto.MessageResponse;
-import com.ant.formation.entities.Theme;
-import com.ant.formation.repositories.ThemeRepository;
-import com.ant.formation.services.ThemeService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.ant.formation.dto.MessageResponse;
+import com.ant.formation.entities.Formateur;
+import com.ant.formation.entities.Theme;
+import com.ant.formation.repositories.ThemeRepository;
+import com.ant.formation.services.ThemeService;
 
 @Service
 public class ThemeServiceImpl implements ThemeService {
@@ -70,4 +72,11 @@ public class ThemeServiceImpl implements ThemeService {
     public Theme findByLibelle(String libelle) {
         return themeRepository.findByLibelle(libelle);
     }
+
+	@Override
+	public List<Theme> findByFormateur(Integer id) {
+		Formateur formateur = new Formateur();
+		formateur.setId(id);
+		return themeRepository.findByFormateurThemes_Formateur(formateur);
+	}
 }
