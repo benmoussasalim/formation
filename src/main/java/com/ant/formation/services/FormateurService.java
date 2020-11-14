@@ -13,7 +13,8 @@ public interface FormateurService {
     public MessageResponse update(FormateurThemeRequest formateurThemeRequest);
     public MessageResponse delete(Integer id);
     public List<Formateur> findAll();
+    public List<Formateur> findByTheme(Integer id);
     public Formateur findByID(Integer id);
-    public List<Formateur> findByFormateurThemes(Theme theme);
+
 
 }

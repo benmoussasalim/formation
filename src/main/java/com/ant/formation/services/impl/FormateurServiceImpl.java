@@ -100,12 +100,16 @@ public class FormateurServiceImpl implements FormateurService {
     }
 
     @Override
+    public List<Formateur> findByTheme(Integer id) {
+        Theme theme = new Theme();
+        theme.setId(id);
+        return formateurRepository.findByFormateurThemes_Theme(theme);
+    }
+
+    @Override
     public Formateur findByID(Integer id) {
         return formateurRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public List<Formateur> findByFormateurThemes(Theme theme) {
-        return formateurRepository.findByFormateurThemes(theme);
-    }
+
 }

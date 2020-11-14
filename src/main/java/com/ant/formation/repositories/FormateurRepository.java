@@ -11,7 +11,7 @@ public interface FormateurRepository extends JpaRepository<Formateur, Integer> {
     boolean existsByEmail(String email);
     boolean existsByEmailAndId(String email, Integer id);
     boolean existsByIdAndFormationsIsNotNull(Integer id);
-    List<Formateur> findByFormateurThemes (Theme theme);
 
 
+    public List<Formateur> findByFormateurThemes_Theme(Theme theme);
 }
