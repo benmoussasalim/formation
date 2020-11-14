@@ -1,5 +1,6 @@
 package com.ant.formation.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,10 +14,10 @@ public class Theme implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String libelle;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "theme")
     private List<Formation> formations;
-
-    @ManyToMany
-    private List<Formateur> formateurs;
+    @JsonIgnore
+    @OneToMany(mappedBy = "theme")
+    private List<FormateurTheme> formateurThemes;
 }

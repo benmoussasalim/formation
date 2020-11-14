@@ -1,6 +1,7 @@
 package com.ant.formation.entities;
 
 import com.ant.formation.enums.StatusFormation;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -31,8 +32,13 @@ public class Formation implements Serializable {
     private Theme theme;
     @ManyToOne
     private Formateur formateur;
+    @JsonIgnore
     @OneToMany(mappedBy = "formation")
     private List<Planing> planings;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "formation")
+    private List<CandidatFormation> candidatFormations;
 
 
 }

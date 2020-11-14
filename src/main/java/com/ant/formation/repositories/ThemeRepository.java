@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ThemeRepository extends JpaRepository<Theme, Integer> {
     boolean existsByLibelle(String libelle);
-    boolean existsByIdAndFormateursIsNotNullOrFormationsIsNotNull(Integer id);
+
     Theme findByLibelle(String libelle);
 
+    boolean existsByIdAndFormateurThemesIsNotNullOrFormationsIsNotNull(Integer id);
 }
 

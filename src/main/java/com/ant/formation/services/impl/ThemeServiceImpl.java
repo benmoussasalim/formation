@@ -49,7 +49,7 @@ public class ThemeServiceImpl implements ThemeService {
     public MessageResponse delete(Integer id) {
 
 
-            boolean exist = themeRepository.existsByIdAndFormateursIsNotNullOrFormationsIsNotNull(id);
+            boolean exist = themeRepository.existsByIdAndFormateurThemesIsNotNullOrFormationsIsNotNull(id);
             if(exist){
                 return  new MessageResponse(false, "Attention",
                         "Theme affecté a un ou plusieurs formateurs ou formations");

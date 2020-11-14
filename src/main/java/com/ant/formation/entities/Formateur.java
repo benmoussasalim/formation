@@ -16,6 +16,6 @@ public class Formateur extends Personne {
     @OneToMany(mappedBy = "formateur")
     private List<Formation> formations;
 
-    @ManyToMany(mappedBy = "formateurs" , cascade = CascadeType.REMOVE)
-    private List<Theme> themes;
+    @OneToMany(mappedBy = "formateur")
+    private List<FormateurTheme> formateurThemes;
 }

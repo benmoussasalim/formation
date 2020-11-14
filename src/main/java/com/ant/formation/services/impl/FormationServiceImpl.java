@@ -1,7 +1,10 @@
 package com.ant.formation.services.impl;
 
 import com.ant.formation.dto.MessageResponse;
+import com.ant.formation.entities.Formateur;
 import com.ant.formation.entities.Formation;
+import com.ant.formation.entities.Theme;
+import com.ant.formation.enums.StatusFormation;
 import com.ant.formation.repositories.FormationRepository;
 import com.ant.formation.services.FormationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +33,18 @@ public class FormationServiceImpl implements FormationService {
 
     @Override
     public MessageResponse delete(Integer id) {
-        boolean exist = formationRepository.existsByIdAndCandidatFormation(id);
-        if (exist) {
+        boolean exist = formationRepository.existsById(id);
+        if (!exist) {
             return new MessageResponse(false, "Attention",
-                    "Formation affecté a un ou plusieurs formations");
+                    "Formation n'existe pas");
         }
 
+
+        exist =    formationRepository.existsByIdAndCandidatFormationsIsNotNullOrPlaningsIsNotNull(id);
+        if (exist) {
+            return new MessageResponse(false, "Attention",
+                    "Formation affectée a un ou plusieurs plannings ou candidats");
+        }
 
         formationRepository.deleteById(id);
 
@@ -43,8 +52,8 @@ public class FormationServiceImpl implements FormationService {
     }
 
     @Override
-    public List<Formation> findAll() {
-        return formationRepository.findAll();
+    public List<Formation> findByStatus(StatusFormation statusFormation) {
+        return formationRepository.findByStatusFormation(statusFormation);
     }
-    
+
 }
