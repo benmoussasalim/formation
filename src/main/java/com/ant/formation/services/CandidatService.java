@@ -13,5 +13,4 @@ public interface CandidatService {
     public List<Candidat> findAll();
     public List<Candidat> filter(String keyword);
     public Candidat findByID(Integer id);
-
 }

@@ -1,9 +1,7 @@
 package com.ant.formation.services.impl;
 
 import com.ant.formation.dto.MessageResponse;
-import com.ant.formation.entities.Formateur;
 import com.ant.formation.entities.Formation;
-import com.ant.formation.entities.Theme;
 import com.ant.formation.enums.StatusFormation;
 import com.ant.formation.repositories.FormationRepository;
 import com.ant.formation.services.FormationService;
