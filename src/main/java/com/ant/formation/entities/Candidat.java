@@ -1,6 +1,8 @@
 package com.ant.formation.entities;
 
 import com.ant.formation.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
@@ -21,10 +23,10 @@ public class Candidat extends Personne  {
     @Enumerated(EnumType.STRING)
     private Status status;
     private String societe;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "candidat")
     private List<CandidatFormation> candidatFormations;
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "candidats")
     private List<GroupeEncadrement> groupeEncadrements;
 

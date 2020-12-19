@@ -15,33 +15,33 @@ import java.util.List;
 @RequestMapping("/formation")
 @CrossOrigin("*")
 public class FormationController {
-    @Autowired
-    private FormationService formationService;
-    
-    @GetMapping("/status/{status}")
-    public List<Formation> findByStatus(@PathVariable StatusFormation status) {
-        return  formationService.findByStatus(status);
-    }
-    
-    @GetMapping("/{id}")
-    public Formation findById(@PathVariable Integer id) {
-        return  formationService.findById(id);
-    }
+	@Autowired
+	private FormationService formationService;
 
-    @PostMapping
-    public MessageResponse save(@RequestBody Formation formation) {
-        
-        return  formationService.save(formation);
-    }
+	@GetMapping("/status/{status}")
+	public List<Formation> findByStatus(@PathVariable StatusFormation status) {
+		return formationService.findByStatus(status);
+	}
 
-    @PutMapping
-    public MessageResponse update(@RequestBody Formation formation) {
-        return  formationService.update(formation);
-    }
+	@GetMapping("/{id}")
+	public Formation findById(@PathVariable Integer id) {
+		return formationService.findById(id);
+	}
 
-    @DeleteMapping("/{id}")
-    public MessageResponse delete(@PathVariable("id") Integer id) {
-        return  formationService.delete(id);
-    }
+	@PostMapping
+	public MessageResponse save(@RequestBody Formation formation) {
+
+		return formationService.save(formation);
+	}
+
+	@PutMapping
+	public MessageResponse update(@RequestBody Formation formation) {
+		return formationService.update(formation);
+	}
+
+	@DeleteMapping("/{id}")
+	public MessageResponse delete(@PathVariable("id") Integer id) {
+		return formationService.delete(id);
+	}
 
 }

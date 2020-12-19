@@ -1,14 +1,15 @@
 package com.ant.formation.services;
 
-import com.ant.formation.dto.MessageResponse;
-import com.ant.formation.entities.CandidatFormation;
-
 import java.util.List;
 
+import com.ant.formation.dto.MessageResponse;
+import com.ant.formation.entities.Candidat;
+import com.ant.formation.entities.CandidatFormation;
+
 public interface CandidatFormationService {
-    public MessageResponse save(CandidatFormation candidatFormation);
+    public MessageResponse save(List<CandidatFormation> candidatFormations );
     public MessageResponse update(CandidatFormation candidatFormation);
     public MessageResponse delete(Integer id);
-    public List<CandidatFormation> findAll();
-
+    public List<CandidatFormation> findCandidatByFormation(Integer id);
+    public List<Candidat> findCandidatNotInFormation(Integer id);
 }
